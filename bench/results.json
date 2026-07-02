@@ -22,18 +22,18 @@
   "performance": [
     {
       "observations": 2400,
-      "detect_s": 0.0028,
-      "obs_per_s": 866770
+      "detect_s": 0.0026,
+      "obs_per_s": 917115
     },
     {
       "observations": 12000,
-      "detect_s": 0.0118,
-      "obs_per_s": 1020633
+      "detect_s": 0.0137,
+      "obs_per_s": 872771
     },
     {
       "observations": 48000,
-      "detect_s": 0.0646,
-      "obs_per_s": 743459
+      "detect_s": 0.0517,
+      "obs_per_s": 928641
     }
   ],
   "environment": {

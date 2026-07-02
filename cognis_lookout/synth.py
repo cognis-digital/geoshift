@@ -76,3 +76,17 @@ def landscape_with_people(seed=32, H=80, W=80, n_people=4, clutter=0.05, amp=0.4
         img[r][c] += amp
         truth.add((r, c))
     return img, truth
+
+
+def landscape_passes(seed=33, H=64, W=64, passes=12, clutter=0.06, amp=0.16):
+    """Multiple overhead passes of the same terrain with one faint static target
+    (~2.7 sigma single-pass, below detection) — recoverable only by SNR stacking.
+    Returns (frames, (row, col))."""
+    rng = random.Random(seed)
+    r0, c0 = H // 2, W // 2
+    frames = []
+    for _ in range(passes):
+        img = [[max(0.0, rng.gauss(0.25, clutter)) for _ in range(W)] for _ in range(H)]
+        img[r0][c0] += amp
+        frames.append(img)
+    return frames, (r0, c0)

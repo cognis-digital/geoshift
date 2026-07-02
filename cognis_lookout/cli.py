@@ -41,15 +41,42 @@ def cmd_pol(args):
 def cmd_search(args):
     """Wide-area small-target search — e.g. a lost hiker as a pixel in terrain."""
     from . import synth
-    from .smalltarget import detect_small_targets
-    img, truth = synth.landscape_with_people()
-    blobs = detect_small_targets(img, k=args.k)
-    print(f"COGNIS LOOKOUT | wide-area search over {len(img)}x{len(img[0])} terrain scene (CA-CFAR)")
-    print(f"planted targets: {len(truth)}   detections: {len(blobs)}   (k={args.k} sigma)")
+    from .smalltarget import detect_small_targets, detect_with_stacking, pfa_to_k
+    k = pfa_to_k(args.pfa) if args.pfa else args.k
+    if args.stack:
+        frames, tpt = synth.landscape_passes()
+        single = detect_small_targets(frames[0], k=k)
+        blobs = detect_with_stacking(frames, k=k)
+        truth = {tpt}
+        print(f"COGNIS LOOKOUT | {len(frames)}-pass SNR stack over terrain "
+              f"(single-pass found {len(single)})")
+    else:
+        img, truth = synth.landscape_with_people()
+        blobs = detect_small_targets(img, k=k)
+        print(f"COGNIS LOOKOUT | wide-area search over {len(img)}x{len(img[0])} terrain scene (CA-CFAR)")
+    print(f"planted targets: {len(truth)}   detections: {len(blobs)}   (k={round(k,2)} sigma)")
     for i, b in enumerate(blobs[:10], 1):
         print(f"  [{i}] pixel ({b['row']},{b['col']}) size={b['size']}px "
               f"SNR={b['peak_snr']} conf={b['confidence']:.2f}")
     print("NOTE: non-kinetic search leads (possible person/object); corroborate before tasking.")
+    return 0
+
+
+def cmd_heatmap(args):
+    from . import synth
+    from .smalltarget import heatmap, heatmap_geojson
+    img, _ = synth.landscape_with_people()
+    grid = heatmap(img, cell=8)
+    hi = max((max(r) for r in grid if r), default=1.0) or 1.0
+    ramp = " .:-=+*#%@"
+    print(f"COGNIS LOOKOUT | georeferenced search-priority heatmap ({len(grid)}x{len(grid[0])} cells)")
+    for row in grid:
+        print("".join(ramp[min(len(ramp) - 1, int((v / hi) * (len(ramp) - 1)))] for v in row))
+    if args.geojson:
+        gt = {"origin_lat": 40.0, "origin_lon": -105.0, "dlat": -0.0005, "dlon": 0.0005}
+        with open(args.geojson, "w", encoding="utf-8") as f:
+            f.write(json.dumps(heatmap_geojson(grid, gt, cell=8), indent=2))
+        print(f"[+] heatmap GeoJSON -> {args.geojson}")
     return 0
 
 
@@ -73,7 +100,13 @@ def build_parser():
 
     s = sub.add_parser("search", help="wide-area small-target search (lost hiker/object)")
     s.add_argument("--k", type=float, default=5.0, help="CFAR threshold (sigma)")
+    s.add_argument("--pfa", type=float, help="target probability of false alarm (overrides --k)")
+    s.add_argument("--stack", action="store_true", help="SNR-stack multiple passes for a faint target")
     s.set_defaults(func=cmd_search)
+
+    h = sub.add_parser("heatmap", help="georeferenced search-priority heatmap")
+    h.add_argument("--geojson")
+    h.set_defaults(func=cmd_heatmap)
     return p
 
 

@@ -2,6 +2,15 @@
 
 Adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.3.0] — 2026-07-02
+
+### Added
+- **Multi-pass SNR stacking** (`detect_with_stacking`) to recover a faint target
+  below single-pass detectability; **Pfa-controlled CFAR** (`pfa_to_k`).
+- **Georeferenced search-priority heatmap** (`heatmap`, `heatmap_geojson`) — dense
+  CA-CFAR SNR surface as graded GeoJSON polygons; CLI `heatmap`.
+- **ROC characterization** in `bench/` + honest `docs/COMPLIANCE.md`.
+
 ## [0.2.0] — 2026-07-02
 
 ### Added
