@@ -3,9 +3,9 @@ requires = ["setuptools>=61"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "cognis-lookout"
+name = "geoshift"
 version = "0.3.0"
-description = "Geospatial change detection & pattern-of-life for counternarcotics — Cognis Lookout"
+description = "Geospatial change detection & pattern-of-life for counternarcotics — Geoshift"
 readme = "README.md"
 requires-python = ">=3.9"
 authors = [{ name = "Cognis Digital LLC" }]
@@ -17,10 +17,10 @@ dependencies = []
 Homepage = "https://cognis.digital"
 
 [project.scripts]
-cognis-lookout = "cognis_lookout.cli:main"
+geoshift = "geoshift.cli:main"
 
 [tool.setuptools]
-packages = ["cognis_lookout"]
+packages = ["geoshift"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

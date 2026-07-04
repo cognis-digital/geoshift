@@ -1,4 +1,4 @@
-# Cognis Lookout — Verification Results
+# Geoshift — Verification Results
 
 Reproduce with: `python bench/run_all.py`.
 

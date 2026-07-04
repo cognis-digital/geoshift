@@ -1,9 +1,9 @@
 from bench import evaluate
-from cognis_lookout import synth
-from cognis_lookout.change import detect_new_activity
-from cognis_lookout.geo import cell_of, haversine_km
-from cognis_lookout.geofence import check
-from cognis_lookout.patternoflife import anomalies, build_profile
+from geoshift import synth
+from geoshift.change import detect_new_activity
+from geoshift.geo import cell_of, haversine_km
+from geoshift.geofence import check
+from geoshift.patternoflife import anomalies, build_profile
 
 
 def test_cell_and_haversine():

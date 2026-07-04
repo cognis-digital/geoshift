@@ -11,8 +11,8 @@ import time
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from bench import evaluate  # noqa: E402
-from cognis_lookout import synth  # noqa: E402
-from cognis_lookout.change import detect_new_activity  # noqa: E402
+from geoshift import synth  # noqa: E402
+from geoshift.change import detect_new_activity  # noqa: E402
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
@@ -35,7 +35,7 @@ def _perf():
 def render_md(a, perf, env) -> str:
     c, pol = a["change_detection"], a["pattern_of_life"]
     L = []
-    L.append("# Cognis Lookout — Verification Results\n")
+    L.append("# Geoshift — Verification Results\n")
     L.append("Reproduce with: `python bench/run_all.py`.\n")
     L.append(f"Environment: {env['implementation']} {env['python']} on {env['system']}/{env['machine']}. "
              "Deterministic synthetic data; detection/monitoring only.\n")

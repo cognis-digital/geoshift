@@ -1,6 +1,6 @@
 # SOLIC Challenge Area 3 — Capability Mapping
 
-| Desired capability | Cognis Lookout | Module |
+| Desired capability | Geoshift | Module |
 |---|---|---|
 | Near-real-time reporting on trafficking corridors | AOI-grid activity + change detection between windows | `grid`, `change` |
 | AI-enabled change detection & anomaly alerting | New-activity hotspots + pattern-of-life anomalies (confidence-scored) | `change`, `patternoflife` |

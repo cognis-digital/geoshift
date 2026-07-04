@@ -30,6 +30,6 @@ Initial public release.
 - Pattern-of-life profiling + anomaly detection — `patternoflife`.
 - Geofence entry/dwell detection — `geofence`.
 - Deterministic synthetic generators with planted ground truth — `synth`.
-- CLI (`cognis-lookout`): `demo`, `change`, `pol`.
+- CLI (`geoshift`): `demo`, `change`, `pol`.
 - Verification harness: change + pattern-of-life metrics + performance;
   results in `RESULTS.md`. 5 tests. CI across Python 3.9–3.13.

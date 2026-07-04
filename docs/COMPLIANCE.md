@@ -1,6 +1,6 @@
 # Standards & Compliance Posture — an honest statement
 
-Cognis Lookout is engineered *toward* defense-grade GEOINT needs. This states
+Geoshift is engineered *toward* defense-grade GEOINT needs. This states
 plainly what is implemented versus what formal military acceptance requires. We do
 **not** claim the software "meets all military requirements" — that is a
 determination made by a sponsoring authority through a formal process.

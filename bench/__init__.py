@@ -1,1 +1,1 @@
-"""Verification harness for Cognis Lookout."""
+"""Verification harness for Geoshift."""

@@ -1,6 +1,6 @@
 from bench import evaluate
-from cognis_lookout import synth
-from cognis_lookout.smalltarget import (
+from geoshift import synth
+from geoshift.smalltarget import (
     detect_small_targets, detect_with_stacking, heatmap, heatmap_geojson,
     pfa_to_k, to_geojson,
 )

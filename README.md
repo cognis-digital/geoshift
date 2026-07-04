@@ -1,4 +1,4 @@
-<h1 align="center">🟣 Cognis Lookout</h1>
+<h1 align="center">🟣 Geoshift</h1>
 <p align="center"><b>Geospatial change detection &amp; pattern-of-life for counternarcotics</b><br>
 <i>Surface newly-active areas, flag off-pattern activity, and geofence areas of interest — self-hosted, offline.</i></p>
 
@@ -27,9 +27,9 @@
 ## Quick start
 
 ```bash
-git clone https://github.com/cognis-digital/cognis-lookout
-cd cognis-lookout
-python -m cognis_lookout demo
+git clone https://github.com/cognis-digital/geoshift
+cd geoshift
+python -m geoshift demo
 ```
 
 ## Verification & proof

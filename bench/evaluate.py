@@ -4,10 +4,10 @@ from __future__ import annotations
 
 import json
 
-from cognis_lookout import synth
-from cognis_lookout.change import detect_new_activity
-from cognis_lookout.patternoflife import anomalies, build_profile
-from cognis_lookout.smalltarget import detect_small_targets
+from geoshift import synth
+from geoshift.change import detect_new_activity
+from geoshift.patternoflife import anomalies, build_profile
+from geoshift.smalltarget import detect_small_targets
 
 from .metrics import prf
 
